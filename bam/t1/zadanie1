@@ -1,0 +1,33 @@
+package practice;
+import java.util.Scanner;
+public class zadanie1 {
+public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
+    System.out.print("Введите количество элементов в массиве: ");
+	int n = scanner.nextInt();
+	double[] array = new double[n];
+	System.out.println("Введите элементы массива:");
+	for (int i = 0; i < n; i++) {
+	    array[i] = scanner.nextDouble();
+	}
+	int minIndex = 0;
+	double minZnach = Math.abs(array[0]);
+	for (int i = 1; i < array.length; i++) {
+	    if (Math.abs(array[i]) < minZnach) {
+	        minZnach = Math.abs(array[i]);
+	        minIndex = i;
+	     }
+	}
+	if (minIndex < array.length - 1) {
+	    double sum = 0;
+	    int kolvo = 0;
+	    for (int i = minIndex + 1; i < array.length; i++) {
+	        sum += array[i];
+	        kolvo++;
+	    }
+	    double srednee = sum / kolvo;
+	    System.out.println("Среднее арифметическое элементов после минимального по модулю элемента: " + srednee);
+	} 
+	scanner.close();
+    }
+}
