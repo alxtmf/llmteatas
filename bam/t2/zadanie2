@@ -1,0 +1,14 @@
+package practice;
+import java.util.Scanner;
+public class zadanie2 {
+public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
+	System.out.print("Введите строку: ");
+	String input = scanner.nextLine();
+	String[] words = input.split("[\\s.,!?:;]+");
+	for (String word : words) {
+	    System.out.println(word);
+	}
+	scanner.close();
+	}
+}
