@@ -1,0 +1,98 @@
+class Employee:
+    def __init__(self, fio, position, birth_year, salary):
+        self.fio = fio
+        self.position = position
+        self.birth_year = birth_year
+        self.salary = salary
+
+def sort_employees_by_salary(employees):
+    employees.sort(key=lambda x: x.salary)
+
+def search_employee_by_field(employees, field, search_value):
+    found_employees = []
+    for employee in employees:
+        if getattr(employee, field).lower() == search_value.lower():
+            found_employees.append(employee)
+    return found_employees
+
+def modify_employee(employees, index, new_data):
+    if 0 <= index < len(employees):
+        employee = employees[index]
+        employee.fio = new_data["fio"]
+        employee.position = new_data["position"]
+        employee.birth_year = new_data["birth_year"]
+        employee.salary = new_data["salary"]
+        return True
+    else:
+        return False
+
+def delete_employee(employees, index):
+    if 0 <= index < len(employees):
+        del employees[index]
+        return True
+    else:
+        return False
+
+def display_employees(employees):
+    print("\nСписок сотрудников:")
+    print("{:<5} {:<30} {:<20} {:<10} {:<10}".format("Индекс", "ФИО", "Должность", "Год рождения", "Заработная плата"))
+    print("-" * 80)
+    for i, employee in enumerate(employees):
+        print("{:<5} {:<30} {:<20} {:<10} {:<10}".format(i, employee.fio, employee.position, employee.birth_year, employee.salary))
+    print(f"\nВсего сотрудников: {len(employees)}")
+
+def main():
+    employees = [
+        Employee("Иванов Иван Иванович", "Менеджер", 1985, 2500),
+        Employee("Петров Петр Петрович", "Разработчик", 1990, 3500),
+        Employee("Сидорова Елена Владимировна", "Дизайнер", 1988, 2800)
+    ]
+    while True:
+        print("\nСистема управления сотрудниками")
+        print("1. Сортировать сотрудников по зарплате")
+        print("2. Поиск сотрудника по ФИО")
+        print("3. Изменить данные сотрудника")
+        print("4. Удалить сотрудника")
+        print("5. Вывести список сотрудников")
+        print("6. Выход")
+        choice = int(input("Введите номер операции: "))
+        if choice == 1:
+            sort_employees_by_salary(employees)
+            print("Сотрудники отсортированы по зарплате:")
+            display_employees(employees)
+        elif choice == 2:
+            search_fio = "Иванов Иван Иванович"
+            found_employees = search_employee_by_field(employees, "fio", search_fio)
+            if found_employees:
+                print(f"Найденные сотрудники с ФИО '{search_fio}':")
+                display_employees(found_employees)
+            else:
+                print(f"Сотрудник с ФИО '{search_fio}' не найден.")
+        elif choice == 3:
+            index = 0
+            new_data = {
+                "fio": "Новый ФИО",
+                "position": "Новая должность",
+                "birth_year": 1995,
+                "salary": 3000.0
+            }
+            if modify_employee(employees, index, new_data):
+                print(f"Данные для сотрудника {index} успешно обновлены.")
+            else:
+                print("Неверный индекс. Изменения не выполнены.")
+        elif choice == 4:
+            index = 0
+            if delete_employee(employees, index):
+                print(f"Сотрудник {index} успешно удален.")
+            else:
+                print("Неверный индекс. Удаление не выполнено.")
+        elif choice == 5:
+            display_employees(employees)
+        elif choice == 6:
+            print("Программа завершена.")
+            break
+        else:
+            print("Неверный выбор. Пожалуйста, выберите действие от 1 до 6.")
+
+if __name__ == "__main__":
+    main()
