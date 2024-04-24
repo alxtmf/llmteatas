@@ -1,0 +1,12 @@
+input_string = input("Введите строку: ")
+
+words = input_string.split()
+
+marks = ",.!?:;"
+for i in range(len(words)):
+    for mark in marks:
+        words[i] = words[i].rstrip(mark)
+
+for word in words:
+    if word:
+        print(word)
