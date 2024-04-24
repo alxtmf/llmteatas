@@ -1,0 +1,31 @@
+package practice;
+
+public class Zadanie2Test {
+
+    public static void main(String[] args) {
+        testSplitString();
+    }
+
+    private static void testSplitString() {
+        String input = "Привет, всем! Это юнит тест.";
+        String[] expected = {"Привет", "всем", "Это", "юнит", "тест"};
+        String[] result = zadanie2.splitString(input);
+        boolean passed = true;
+        if (expected.length == result.length) {
+            for (int i = 0; i < expected.length; i++) {
+                if (!expected[i].equals(result[i])) {
+                    passed = false;
+                    break;
+                }
+            }
+        } else {
+            passed = false;
+        }
+
+        if (passed) {
+            System.out.println("Тест прошел");
+        } else {
+            System.out.println("Тест не прошел");
+        }
+    }
+}
