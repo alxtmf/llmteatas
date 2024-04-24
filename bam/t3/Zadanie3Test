@@ -1,0 +1,83 @@
+package practice;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Zadanie3Test {
+
+    public static void main(String[] args) {
+        testCreateKvartira();
+        testSortKvartiraByFIO();
+        testSearchKvartiraByFIO();
+        testUpdateKvartira();
+        testDeleteKvartira();
+        testPrintKvartiraList();
+    }
+
+    public static void testCreateKvartira() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        Scanner scanner = new Scanner("Богатых Арсений\n100\n2\n3\n");
+        zadanie3.createKvartira(scanner, kvartiraList);
+        if (!kvartiraList.isEmpty()) {
+            System.out.println("Тест создания квартиры  пройден.");
+        } else {
+            System.out.println("Тест создания квартиры не пройден.");
+        }
+    }
+
+    public static void testSortKvartiraByFIO() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        kvartiraList.add(new zadanie3.Kvartira("Богатых Арсений", 100.0, 2, 3));
+        kvartiraList.add(new zadanie3.Kvartira("Смородников Виталий", 150.0, 3, 4));
+        kvartiraList.add(new zadanie3.Kvartira("Иванов Петр", 120.0, 2, 2));
+        zadanie3.sortKvartiraByFIO(kvartiraList);
+        boolean sorted = true;
+        for (int i = 1; i < kvartiraList.size(); i++) {
+            if (kvartiraList.get(i - 1).FIO.compareTo(kvartiraList.get(i).FIO) > 0) {
+                sorted = false;
+                break;
+            }
+        }
+        if (sorted) {
+            System.out.println("Тест сортировки квартир по ФИО пройден.");
+        } else {
+            System.out.println("Тест сортировки квартир по ФИО не пройден.");
+        }
+    }
+
+    public static void testSearchKvartiraByFIO() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        kvartiraList.add(new zadanie3.Kvartira("Богатых Арсений", 100.0, 2, 3));
+        kvartiraList.add(new zadanie3.Kvartira("Смородников Виталий", 150.0, 3, 4));
+        kvartiraList.add(new zadanie3.Kvartira("Иванов Петр", 120.0, 2, 2));
+        Scanner scanner = new Scanner("Богатых Арсений\n");
+        zadanie3.searchKvartiraByFIO(scanner, kvartiraList);
+    }
+
+    public static void testUpdateKvartira() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        kvartiraList.add(new zadanie3.Kvartira("Богатых Арсений", 100.0, 2, 3));
+        kvartiraList.add(new zadanie3.Kvartira("Смородников Виталий", 150.0, 3, 4));
+        kvartiraList.add(new zadanie3.Kvartira("Иванов Петр", 120.0, 2, 2));
+        Scanner scanner = new Scanner("2\nБудаева Аяна\n200\n4\n5\n");
+        zadanie3.updateKvartira(scanner, kvartiraList);
+    }
+
+    public static void testDeleteKvartira() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        kvartiraList.add(new zadanie3.Kvartira("Богатых Арсений", 100.0, 2, 3));
+        kvartiraList.add(new zadanie3.Kvartira("Смородников Виталий", 150.0, 3, 4));
+        kvartiraList.add(new zadanie3.Kvartira("Иванов Петр", 120.0, 2, 2));
+        Scanner scanner = new Scanner("2\n");
+        zadanie3.deleteKvartira(scanner, kvartiraList);
+    }
+
+    public static void testPrintKvartiraList() {
+        ArrayList<zadanie3.Kvartira> kvartiraList = new ArrayList<>();
+        kvartiraList.add(new zadanie3.Kvartira("Богатых Арсений", 100.0, 2, 3));
+        kvartiraList.add(new zadanie3.Kvartira("Смородников Виталий", 150.0, 3, 4));
+        kvartiraList.add(new zadanie3.Kvartira("Иванов Петр", 120.0, 2, 2));
+        zadanie3.printKvartiraList(kvartiraList);
+
+    }
+}
