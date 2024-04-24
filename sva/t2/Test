@@ -1,0 +1,14 @@
+N = 3 
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for i in range(N):
+    matrix[i][i], matrix[i][N-i-1] = matrix[i][N-i-1], matrix[i][i]
+
+print("\nМатрица после замены диагоналей:")
+for row in matrix:
+    print(*row)
