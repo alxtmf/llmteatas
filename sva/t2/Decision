@@ -1,0 +1,13 @@
+N = int(input("Введите размер матрицы (N): "))
+
+matrix = []
+for _ in range(N):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+for i in range(N):
+    matrix[i][i], matrix[i][N-i-1] = matrix[i][N-i-1], matrix[i][i]
+
+print("\nМатрица после замены диагоналей:")
+for row in matrix:
+    print(*row)
