@@ -18,6 +18,11 @@ if __name__ == "__main__":
          [11, 12, 13, 14, 15],
          [16, 17, 18, 19, 20],
          [21, 22, 23, 24, 25]]
+    expected_output = [[5, 2, 3, 4, 1],
+                       [6, 9, 8, 7, 10],
+                       [11, 12, 13, 14, 15],
+                       [16, 19, 18, 17, 20],
+                       [25, 22, 23, 24, 21]]
     result = swap_diagonals(A)
     print("Исходная матрица:")
     for row in A:
@@ -26,7 +31,8 @@ if __name__ == "__main__":
     print("Результат:")
     for row in result:
         print(' '.join(map(str, row)))
-    if swap_diagonals(A):
+
+    if result == expected_output:
         print("Тест пройден")
     else:
         print("Тест не пройден")
