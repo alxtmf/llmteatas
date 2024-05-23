@@ -1,0 +1,28 @@
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+    return arr
+def test_shell_sort():
+    test_array = [64, 34, 25, 12, 22, 11, 90]
+    sorted_array = shell_sort(test_array.copy())
+    expected_sorted_array = sorted(test_array)
+    print("Исходный массив:")
+    print(test_array)
+    print("Отсортированный массив методом Шелла:")
+    print(sorted_array)
+    print("Эталонный отсортированный массив (методом sorted):")
+    print(expected_sorted_array)
+    if sorted_array == expected_sorted_array:
+        print("Тест пройден.")
+    else:
+        print("Тест не пройден.")
+test_shell_sort()
