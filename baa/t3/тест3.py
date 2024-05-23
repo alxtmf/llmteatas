@@ -13,14 +13,16 @@ def shell_sort(arr):
         gap //= 2
 
 arr = [12, 13, 11, 45, 67, 23, 46]
+expected_output = [11, 12, 13, 23, 45, 46, 67]
 
 print("Исходный массив:", arr)
 
 shell_sort(arr)
 
 print("Отсортированный массив:", arr)
+
 if __name__ == "__main__":
-    if arr == sorted(arr):
-     print("Тест пройден")
+    if arr == expected_output:
+        print("Тест пройден")
     else:
-     print("Тест не пройден")
+        print("Тест не пройден")
