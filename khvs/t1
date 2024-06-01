@@ -1,4 +1,4 @@
-def is_triangle(x, y, z):
+def is_triangle(x, y, z): 
     if x + y > z and x + z > y and y + z > x:
         return True
     else:

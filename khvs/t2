@@ -1,4 +1,4 @@
-def swap_columns(matrix):
+def swap_columns(matrix): 
     N = len(matrix)
     if N % 2 != 0:
         raise ValueError("Размер матрицы должен быть четным числом")

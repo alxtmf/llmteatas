@@ -1,4 +1,4 @@
-def remove_punctuation(input_string):
+def remove_punctuation(input_string): 
     words = input_string.split()
 
     punctuation_marks = ",.!?:;"
