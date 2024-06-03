@@ -1,0 +1,48 @@
+def remove_punctuation(input_string): 
+    words = input_string.split()
+
+    punctuation_marks = ",.!?:;"
+    for i in range(len(words)):
+        for mark in punctuation_marks:
+            words[i] = words[i].rstrip(mark)
+
+    cleaned_words = [word for word in words if word]
+
+    return cleaned_words
+
+
+def find_longest_word(input_string):
+    words = remove_punctuation(input_string)
+    longest_word = max(words, key=len)
+    return longest_word
+
+
+def words_after_longest(input_string):
+    words = remove_punctuation(input_string)
+    longest_word = max(words, key=len)
+    index_longest = words.index(longest_word)
+    words_after = sorted([word for word in words[index_longest+1:] if word > longest_word])
+    return words_after
+
+
+
+def test_functions():
+    input_string = "Ха, ха, ха, к : хе, хе, хе  , это это это я !"
+    cleaned_string = ["Ха", "ха", "ха", "к", "хе", "хе", "хе", "это", "это", "это", "я"]
+    longest_word = "это"
+    words_after = sorted(
+        ["пример", "текста", "который", "содержит", "знаки", "пунктуации", "точку", "запятую", "вопросительный", "и",
+         "восклицательный", "знаки"])
+
+    assert remove_punctuation(input_string) == cleaned_string, "remove_punctuation() failed"
+    assert find_longest_word(input_string) == longest_word, "find_longest_word() failed"
+    print("Проверка пройдена")
+
+
+if name == "main":
+    test_functions()
+    input_string = input("Введите строку: ")
+    longest_word = find_longest_word(input_string)
+    print("Самое длинное слово в строке:", longest_word)
+    words_after = words_after_longest(input_string)
+    print("Слова, идущие после самого длинного слова по алфавиту:", words_after)
