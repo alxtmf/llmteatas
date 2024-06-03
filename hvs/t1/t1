@@ -1,0 +1,21 @@
+def is_triangle(x, y, z): 
+    if x + y > z and x + z > y and y + z > x:
+        return True
+    else:
+        return False
+
+# Проверка работоспособности программного кода с помощью assert2
+assert is_triangle(3, 4, 5) == True
+assert is_triangle(1, 1, 1) == True
+assert is_triangle(1, 2, 4) == False
+print("Все тесты пройдены")
+
+# Ввод пользовательских данных и вывод результата
+x = float(input("Введите длину первой стороны: "))
+y = float(input("Введите длину второй стороны: "))
+z = float(input("Введите длину третьей стороны: "))
+
+if is_triangle(x, y, z):
+    print("Треугольник существует.")
+else:
+    print("Треугольник не существует.")
