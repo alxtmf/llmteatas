@@ -1,0 +1,40 @@
+def swap_columns(matrix): 
+    N = len(matrix)
+    if N % 2 != 0:
+        raise ValueError("Размер матрицы должен быть четным числом")
+
+    for i in range(0, N, 2):
+        for j in range(N):
+            matrix[j][i], matrix[j][i + 1] = matrix[j][i + 1], matrix[j][i]
+    return matrix
+
+
+def is_columns_swapped(matrix, original_matrix):
+    N = len(matrix)
+    for i in range(0, N, 2):
+        for j in range(N):
+            if matrix[j][i] != original_matrix[j][i + 1] or matrix[j][i + 1] != original_matrix[j][i]:
+                return False
+    return True
+
+
+A = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+]
+
+import copy
+
+original_A = copy.deepcopy(A)
+
+print("Исходная матрица:")
+for row in A:
+    print(row)
+
+A = swap_columns(A)
+
+print("Матрица после обмена четных и нечетных столбцов:")
+for row in A:
+    print(row)
