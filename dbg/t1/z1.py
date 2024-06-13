@@ -16,7 +16,6 @@ def func(arr):
     return sum
 
 
-
 # a = int(input("Введите размер массива"))
 # arr = [0]
 # arr = arr + [random.randint(-10, 10) for i in range(a-1)]
@@ -29,6 +28,7 @@ class TestFuncArray(unittest.TestCase):
         self.assertEqual(func([1, 2, 4, 0, -3, 7]), 10)
         self.assertEqual(func([-3, 0, 4, 0, 6, -5]), 15)
         self.assertEqual(func([1, -3, 0, 4, 6, -3]), 13)
+        self.assertEqual(func([3, 5, -5, 7, 1, 8]), 0)
 
 
 if __name__ == '__main__':
