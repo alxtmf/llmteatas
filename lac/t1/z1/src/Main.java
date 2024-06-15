@@ -1,28 +1,36 @@
-import java.util.Random;
-import java.util.Scanner;
+//Дана целочисленная матрица A(N, N). Вычислите сумму и число элементов матрицы, находящихся под главой диагональю.
 
 public class Main {
     public static void main(String[] args) {
-        System.out.print("Введите размерность матрицы: ");
-        int n = new Scanner(System.in).nextInt();
-
-        int[][] matrix = new int[n][n];
-        Random random = new Random();
+        int[][] matrix = {
+                {10, 20, 30, 40},
+                {50, 60, 70, 80},
+                {90, 100, 110, 120},
+                {130, 140, 150, 160}
+        };
+        int expectedSum = 660;
+        int expectedCount = 6;
 
         System.out.println("Сгенерированная матрица:");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                matrix[i][j] = random.nextInt(100); // Генерируем случайное число от 0 до 99
-                System.out.print(matrix[i][j] + "\t");
+        for (int[] ints : matrix) {
+            for (int j = 0; j < matrix.length; j++) {
+                System.out.print(ints[j] + "\t");
             }
             System.out.println();
         }
 
         int sum = sumUnderDiag(matrix);
-        int count = countUnderDiag(matrix);
+        System.out.println("Сумма элементов под главной диагональю: " + sum + "\tОжидаемая сумма: " + expectedSum);
 
-        System.out.println("Сумма элементов под главной диагональю: " + sum);
-        System.out.println("Количество элементов под главной диагональю: " + count);
+        int count = countUnderDiag(matrix);
+        System.out.println("Количество элементов под главной диагональю: " + count + "\tОжидаемое кол-во: " + expectedCount);
+
+        if(expectedCount == count && expectedSum == sum){
+            System.out.println("Тест пройден");
+        }
+        else{
+            System.out.println("Тест не пройден");
+        }
     }
     public static int sumUnderDiag(int[][] matrix) {
         int sum = 0;
