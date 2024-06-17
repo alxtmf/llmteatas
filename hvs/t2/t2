@@ -25,6 +25,13 @@ A = [
     [13, 14, 15, 16]
 ]
 
+expected_output = [
+                    [2, 1, 4, 3],
+                    [6, 5, 8, 7],
+                    [10, 9, 12, 11],
+                    [14, 13, 16, 15]
+]
+
 import copy
 
 original_A = copy.deepcopy(A)
@@ -38,3 +45,8 @@ A = swap_columns(A)
 print("Матрица после обмена четных и нечетных столбцов:")
 for row in A:
     print(row)
+
+if A == expected_output:
+        print("Тест пройден")
+else:
+        print("Тест не пройден")
